@@ -6,7 +6,7 @@
 /*Create main*/
 int main()
 {
-    /*initialize needed variables*/
+    /*declare needed variables*/
     int foodChoice;
     float taxPercent;
     float tipPercent;
@@ -22,9 +22,7 @@ int main()
     srand((unsigned) time(&t));
 
     /* Pick a random number between 0 and 3*/
-    for(i = 0; i < n; i++){
         foodChoice = rand() % 4;
-    }
 
     /* Assign food using random number */
     switch(foodChoice) {
