@@ -7,6 +7,8 @@
 /*Create main*/
 int main()
 {
+    FILE *fp;       //pointer to a file type
+
     /* declare/initiliaze needed variables */
     int option;
     int guess;
@@ -14,9 +16,15 @@ int main()
     int userCorrectness;
     int maxNum = 10;
 
-    /* Display menu and ask user for input */
+    /* Gets previous max number */
+    fp = fopen("save_user_max.txt", "a+");
+    fclose(fp);
+    fp = fopen("save_user_max.txt", "r");
+    fscanf(fp, "%d", &maxNum);
+    fclose(fp);
 
-    printf("Welcome to the number guessing game! Please choose one of the following options:\n");
+    /* Display menu and ask user for input */
+    printf("Welcome to the number guessing game! The current max value is set to :%d. Please choose one of the following options:\n", maxNum);
     start:
     printf("Press 1 to play the game\n");
     printf("Press 2 to change the max number\n");
@@ -73,6 +81,10 @@ int main()
         printf("That is not an option dummy, please choose a valid option.\n");
         goto start;
     }
+
+    fp = fopen("save_user_max.txt", "w+");
+    fprintf(fp, "%d", maxNum);
+    fclose(fp);
 
     return 0;
 }
